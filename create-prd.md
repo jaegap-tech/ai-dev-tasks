@@ -1,56 +1,56 @@
-# Rule: Generating a Product Requirements Document (PRD)
+# 규칙: 제품 요구사항 문서(PRD) 생성
 
-## Goal
+## 목표
 
-To guide an AI assistant in creating a detailed Product Requirements Document (PRD) in Markdown format, based on an initial user prompt. The PRD should be clear, actionable, and suitable for a junior developer to understand and implement the feature.
+AI 어시스턴트가 사용자의 초기 요청을 바탕으로 Markdown 형식의 상세한 제품 요구사항 문서(PRD)를 작성하도록 안내합니다. PRD는 명확하고 실행 가능해야 하며, 주니어 개발자가 기능을 이해하고 구현할 수 있도록 작성되어야 합니다.
 
-## Process
+## 프로세스
 
-1.  **Receive Initial Prompt:** The user provides a brief description or request for a new feature or functionality.
-2.  **Ask Clarifying Questions:** Before writing the PRD, the AI *must* ask clarifying questions to gather sufficient detail. The goal is to understand the "what" and "why" of the feature, not necessarily the "how" (which the developer will figure out). Make sure to provide options in letter/number lists so I can respond easily with my selections.
-3.  **Generate PRD:** Based on the initial prompt and the user's answers to the clarifying questions, generate a PRD using the structure outlined below.
-4.  **Save PRD:** Save the generated document as `prd-[feature-name].md` inside the `/tasks` directory.
+1.  **초기 요청 받기:** 사용자가 새로운 기능 또는 기능에 대한 간단한 설명이나 요청을 제공합니다.
+2.  **명확화 질문하기:** PRD를 작성하기 전에 AI는 반드시 명확화 질문을 통해 충분한 세부 정보를 수집해야 합니다. 목표는 기능의 "무엇"과 "왜"를 이해하는 것이며, "어떻게"는 개발자가 결정합니다. 사용자가 쉽게 선택할 수 있도록 문자/숫자 목록으로 옵션을 제공하세요.
+3.  **PRD 생성:** 초기 요청과 사용자의 명확화 질문 답변을 바탕으로 아래 구조에 따라 PRD를 작성합니다.
+4.  **PRD 저장:** 생성된 문서를 `/tasks` 디렉터리 내 `prd-[feature-name].md`로 저장합니다.
 
-## Clarifying Questions (Examples)
+## 명확화 질문 (예시)
 
-The AI should adapt its questions based on the prompt, but here are some common areas to explore:
+AI는 요청에 따라 질문을 조정해야 하며, 다음은 일반적으로 확인해야 할 영역입니다:
 
-*   **Problem/Goal:** "What problem does this feature solve for the user?" or "What is the main goal we want to achieve with this feature?"
-*   **Target User:** "Who is the primary user of this feature?"
-*   **Core Functionality:** "Can you describe the key actions a user should be able to perform with this feature?"
-*   **User Stories:** "Could you provide a few user stories? (e.g., As a [type of user], I want to [perform an action] so that [benefit].)"
-*   **Acceptance Criteria:** "How will we know when this feature is successfully implemented? What are the key success criteria?"
-*   **Scope/Boundaries:** "Are there any specific things this feature *should not* do (non-goals)?"
-*   **Data Requirements:** "What kind of data does this feature need to display or manipulate?"
-*   **Design/UI:** "Are there any existing design mockups or UI guidelines to follow?" or "Can you describe the desired look and feel?"
-*   **Edge Cases:** "Are there any potential edge cases or error conditions we should consider?"
+*   **문제/목표:** "이 기능이 사용자에게 어떤 문제를 해결해줍니까?" 또는 "이 기능을 통해 달성하고자 하는 주요 목표는 무엇입니까?"
+*   **대상 사용자:** "이 기능의 주요 사용자는 누구입니까?"
+*   **핵심 기능:** "이 기능을 통해 사용자가 수행할 수 있어야 하는 주요 행동을 설명해주실 수 있나요?"
+*   **사용자 스토리:** "몇 가지 사용자 스토리를 제공해주실 수 있나요? (예: [사용자 유형]으로서, [행동]을 하고 싶다. 그래서 [이점]을 얻는다.)"
+*   **수용 기준:** "이 기능이 성공적으로 구현되었는지 어떻게 알 수 있나요? 주요 성공 기준은 무엇입니까?"
+*   **범위/경계:** "이 기능이 반드시 하지 않아야 할 특정 사항(비목표)이 있습니까?"
+*   **데이터 요구사항:** "이 기능이 표시하거나 다루어야 하는 데이터 종류는 무엇입니까?"
+*   **디자인/UI:** "따라야 할 기존 디자인 목업이나 UI 가이드라인이 있습니까?" 또는 "원하는 외관과 느낌을 설명해주실 수 있나요?"
+*   **엣지 케이스:** "고려해야 할 잠재적 엣지 케이스나 오류 상황이 있습니까?"
 
-## PRD Structure
+## PRD 구조
 
-The generated PRD should include the following sections:
+생성된 PRD에는 다음과 같은 섹션이 포함되어야 합니다:
 
-1.  **Introduction/Overview:** Briefly describe the feature and the problem it solves. State the goal.
-2.  **Goals:** List the specific, measurable objectives for this feature.
-3.  **User Stories:** Detail the user narratives describing feature usage and benefits.
-4.  **Functional Requirements:** List the specific functionalities the feature must have. Use clear, concise language (e.g., "The system must allow users to upload a profile picture."). Number these requirements.
-5.  **Non-Goals (Out of Scope):** Clearly state what this feature will *not* include to manage scope.
-6.  **Design Considerations (Optional):** Link to mockups, describe UI/UX requirements, or mention relevant components/styles if applicable.
-7.  **Technical Considerations (Optional):** Mention any known technical constraints, dependencies, or suggestions (e.g., "Should integrate with the existing Auth module").
-8.  **Success Metrics:** How will the success of this feature be measured? (e.g., "Increase user engagement by 10%", "Reduce support tickets related to X").
-9.  **Open Questions:** List any remaining questions or areas needing further clarification.
+1.  **소개/개요:** 기능과 해결하는 문제를 간략히 설명하고 목표를 명시합니다.
+2.  **목표:** 이 기능의 구체적이고 측정 가능한 목표를 나열합니다.
+3.  **사용자 스토리:** 기능 사용과 이점을 설명하는 사용자 내러티브를 상세히 작성합니다.
+4.  **기능 요구사항:** 기능이 반드시 갖추어야 할 구체적인 기능을 명확하고 간결한 언어로 나열합니다. (예: "시스템은 사용자가 프로필 사진을 업로드할 수 있도록 해야 한다.") 요구사항에 번호를 붙입니다.
+5.  **비목표(범위 외):** 이 기능에 포함되지 않을 사항을 명확히 명시하여 범위를 관리합니다.
+6.  **디자인 고려사항(선택):** 목업 링크, UI/UX 요구사항, 관련 컴포넌트/스타일 등을 기술합니다.
+7.  **기술적 고려사항(선택):** 알려진 기술적 제약, 의존성, 제안 사항 등을 기술합니다. (예: "기존 인증 모듈과 통합해야 함")
+8.  **성공 지표:** 이 기능의 성공을 어떻게 측정할 것인지 명시합니다. (예: "사용자 참여율 10% 증가", "X 관련 지원 티켓 감소")
+9.  **오픈 질문:** 추가로 명확히 해야 할 질문이나 영역을 나열합니다.
 
-## Target Audience
+## 대상 독자
 
-Assume the primary reader of the PRD is a **junior developer**. Therefore, requirements should be explicit, unambiguous, and avoid jargon where possible. Provide enough detail for them to understand the feature's purpose and core logic.
+PRD의 주요 독자는 **주니어 개발자**임을 가정합니다. 따라서 요구사항은 명확하고, 모호하지 않으며, 가능하면 전문 용어를 피해야 합니다. 기능의 목적과 핵심 논리를 이해할 수 있도록 충분한 세부 정보를 제공하세요.
 
-## Output
+## 출력
 
-*   **Format:** Markdown (`.md`)
-*   **Location:** `/tasks/`
-*   **Filename:** `prd-[feature-name].md`
+*   **형식:** Markdown (`.md`)
+*   **위치:** `/tasks/`
+*   **파일명:** `prd-[feature-name].md`
 
-## Final instructions
+## 최종 지침
 
-1. Do NOT start implementing the PRD
-2. Make sure to ask the user clarifying questions
-3. Take the user's answers to the clarifying questions and improve the PRD
+1. PRD를 바로 구현하지 마세요
+2. 반드시 사용자에게 명확화 질문을 하세요
+3. 사용자의 명확화 질문 답변을 반영하여 PRD를 개선하세요

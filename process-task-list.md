@@ -1,47 +1,48 @@
-# Task List Management
+# 작업 목록 관리
 
-Guidelines for managing task lists in markdown files to track progress on completing a PRD
+PRD 완료 진행 상황을 추적하기 위한 마크다운 파일 내 작업 목록 관리 지침
 
-## Task Implementation
-- **One sub-task at a time:** Do **NOT** start the next sub‑task until you ask the user for permission and they say "yes" or "y"
-- **Completion protocol:**  
-  1. When you finish a **sub‑task**, immediately mark it as completed by changing `[ ]` to `[x]`.
-  2. If **all** subtasks underneath a parent task are now `[x]`, follow this sequence:
-    - **First**: Run the full test suite (`pytest`, `npm test`, `bin/rails test`, etc.)
-    - **Only if all tests pass**: Stage changes (`git add .`)
-    - **Clean up**: Remove any temporary files and temporary code before committing
-    - **Commit**: Use a descriptive commit message that:
-      - Uses conventional commit format (`feat:`, `fix:`, `refactor:`, etc.)
-      - Summarizes what was accomplished in the parent task
-      - Lists key changes and additions
-      - References the task number and PRD context
-      - **Formats the message as a single-line command using `-m` flags**, e.g.:
+## 작업 수행
+
+- **한 번에 하나의 하위 작업:** 다음 하위 작업을 시작하기 전에 반드시 사용자에게 허락을 구하고 "yes" 또는 "y"라고 답할 때만 진행하세요.
+- **완료 프로토콜:**  
+  1. **하위 작업**을 완료하면 즉시 `[ ]`를 `[x]`로 변경하여 완료로 표시하세요.
+  2. 상위 작업의 모든 하위 작업이 `[x]`로 표시되면 다음 순서를 따르세요:
+    - **먼저**: 전체 테스트 스위트 실행 (`pytest`, `npm test`, `bin/rails test` 등)
+    - **모든 테스트가 통과한 경우에만**: 변경 사항 스테이징 (`git add .`)
+    - **정리**: 커밋 전에 임시 파일 및 임시 코드를 제거하세요
+    - **커밋**: 다음 기준을 충족하는 설명 커밋 메시지 사용:
+      - 커밋 메시지 규칙 사용 (`feat:`, `fix:`, `refactor:` 등)
+      - 상위 작업에서 달성한 내용 요약
+      - 주요 변경 및 추가 사항 나열
+      - 작업 번호와 PRD 맥락 참조
+      - **`-m` 플래그를 사용해 한 줄 명령으로 메시지 작성**, 예시:
 
         ```
-        git commit -m "feat: add payment validation logic" -m "- Validates card type and expiry" -m "- Adds unit tests for edge cases" -m "Related to T123 in PRD"
+        git commit -m "feat: 결제 검증 로직 추가" -m "- 카드 종류 및 만료일 검증" -m "- 엣지 케이스 단위 테스트 추가" -m "PRD의 T123 관련"
         ```
-  3. Once all the subtasks are marked completed and changes have been committed, mark the **parent task** as completed.
-- Stop after each sub‑task and wait for the user's go‑ahead.
+  3. 모든 하위 작업이 완료되고 변경 사항이 커밋되면 **상위 작업**을 완료로 표시하세요.
+- 각 하위 작업 후에는 반드시 멈추고 사용자의 진행 허락을 기다리세요.
 
-## Task List Maintenance
+## 작업 목록 유지 관리
 
-1. **Update the task list as you work:**
-   - Mark tasks and subtasks as completed (`[x]`) per the protocol above.
-   - Add new tasks as they emerge.
+1. **작업 중 작업 목록을 업데이트하세요:**
+   - 위 프로토콜에 따라 작업 및 하위 작업을 완료로 표시(`[x]`).
+   - 새로운 작업이 발생하면 추가하세요.
 
-2. **Maintain the "Relevant Files" section:**
-   - List every file created or modified.
-   - Give each file a one‑line description of its purpose.
+2. **"관련 파일" 섹션을 유지하세요:**
+   - 생성하거나 수정한 모든 파일을 나열하세요.
+   - 각 파일의 목적을 한 줄로 설명하세요.
 
-## AI Instructions
+## AI 지침
 
-When working with task lists, the AI must:
+작업 목록을 다룰 때 AI는 반드시 다음을 준수해야 합니다:
 
-1. Regularly update the task list file after finishing any significant work.
-2. Follow the completion protocol:
-   - Mark each finished **sub‑task** `[x]`.
-   - Mark the **parent task** `[x]` once **all** its subtasks are `[x]`.
-3. Add newly discovered tasks.
-4. Keep "Relevant Files" accurate and up to date.
-5. Before starting work, check which sub‑task is next.
-6. After implementing a sub‑task, update the file and then pause for user approval.
+1. 중요한 작업을 마칠 때마다 작업 목록 파일을 정기적으로 업데이트하세요.
+2. 완료 프로토콜을 따르세요:
+   - 완료된 **하위 작업**을 `[x]`로 표시하세요.
+   - 모든 하위 작업이 `[x]`가 되면 **상위 작업**도 `[x]`로 표시하세요.
+3. 새롭게 발견된 작업을 추가하세요.
+4. "관련 파일" 정보를 정확하고 최신 상태로 유지하세요.
+5. 작업 시작 전, 다음 하위 작업이 무엇인지 확인하세요.
+6. 하위 작업을 구현한 후 파일을 업데이트하고, 반드시 사용자 승인 후 다음 단계로 진행하세요.

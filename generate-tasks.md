@@ -1,61 +1,61 @@
-# Rule: Generating a Task List from a PRD
+# 규칙: PRD 기반 작업 목록 생성
 
-## Goal
+## 목표
 
-To guide an AI assistant in creating a detailed, step-by-step task list in Markdown format based on an existing Product Requirements Document (PRD). The task list should guide a developer through implementation.
+AI 어시스턴트가 기존 제품 요구사항 문서(PRD)를 기반으로 Markdown 형식의 상세하고 단계별 작업 목록을 작성하도록 안내합니다. 작업 목록은 개발자가 구현을 따라갈 수 있도록 구성되어야 합니다.
 
-## Output
+## 출력
 
-- **Format:** Markdown (`.md`)
-- **Location:** `/tasks/`
-- **Filename:** `tasks-[prd-file-name].md` (e.g., `tasks-prd-user-profile-editing.md`)
+* **형식:** Markdown (`.md`)
+* **위치:** `/tasks/`
+* **파일명:** `tasks-[prd-file-name].md` (예: `tasks-prd-user-profile-editing.md`)
 
-## Process
+## 프로세스
 
-1.  **Receive PRD Reference:** The user points the AI to a specific PRD file
-2.  **Analyze PRD:** The AI reads and analyzes the functional requirements, user stories, and other sections of the specified PRD.
-3.  **Assess Current State:** Review the existing codebase to understand existing infrastructre, architectural patterns and conventions. Also, identify any existing components or features that already exist and could be relevant to the PRD requirements. Then, identify existing related files, components, and utilities that can be leveraged or need modification.
-4.  **Phase 1: Generate Parent Tasks:** Based on the PRD analysis and current state assessment, create the file and generate the main, high-level tasks required to implement the feature. Use your judgement on how many high-level tasks to use. It's likely to be about 
-5. **Inform the user:** Present these tasks to the user in the specified format (without sub-tasks yet) For example, say "I have generated the high-level tasks based on the PRD. Ready to generate the sub-tasks? Respond with 'Go' to proceed." . 
-6.  **Wait for Confirmation:** Pause and wait for the user to respond with "Go".
-7.  **Phase 2: Generate Sub-Tasks:** Once the user confirms, break down each parent task into smaller, actionable sub-tasks necessary to complete the parent task. Ensure sub-tasks logically follow from the parent task, cover the implementation details implied by the PRD, and consider existing codebase patterns where relevant without being constrained by them.
-8.  **Identify Relevant Files:** Based on the tasks and PRD, identify potential files that will need to be created or modified. List these under the `Relevant Files` section, including corresponding test files if applicable.
-9.  **Generate Final Output:** Combine the parent tasks, sub-tasks, relevant files, and notes into the final Markdown structure.
-10.  **Save Task List:** Save the generated document in the `/tasks/` directory with the filename `tasks-[prd-file-name].md`, where `[prd-file-name]` matches the base name of the input PRD file (e.g., if the input was `prd-user-profile-editing.md`, the output is `tasks-prd-user-profile-editing.md`).
+1.  **PRD 파일 지정:** 사용자가 AI에게 특정 PRD 파일을 지정합니다.
+2.  **PRD 분석:** AI가 지정된 PRD의 기능 요구사항, 사용자 스토리 등 각 섹션을 읽고 분석합니다.
+3.  **현재 상태 평가:** 기존 코드베이스를 검토하여 인프라, 아키텍처 패턴, 관례를 파악합니다. 또한, PRD 요구사항과 관련된 기존 컴포넌트나 기능을 식별하고, 활용하거나 수정이 필요한 파일, 컴포넌트, 유틸리티를 확인합니다.
+4.  **1단계: 상위 작업 생성:** PRD 분석과 현재 상태 평가를 바탕으로, 기능 구현에 필요한 주요 상위 작업(Parent Task)을 생성합니다. 적절한 개수의 상위 작업을 판단하여 작성하세요.
+5. **사용자에게 알림:** 지정된 형식으로(아직 하위 작업 없이) 상위 작업을 사용자에게 제시합니다. 예시: "PRD를 기반으로 상위 작업을 생성했습니다. 하위 작업을 생성할 준비가 되셨나요? 진행하려면 'Go'라고 답해주세요." 등.
+6.  **확인 대기:** 사용자가 "Go"라고 답할 때까지 일시 정지합니다.
+7.  **2단계: 하위 작업 생성:** 사용자가 확인하면, 각 상위 작업을 더 작고 실행 가능한 하위 작업(Sub-task)으로 세분화합니다. 하위 작업은 상위 작업에서 논리적으로 이어져야 하며, PRD에서 암시된 구현 세부사항을 포함하고, 기존 코드베이스의 패턴을 참고하되 과도하게 제약받지 않도록 합니다.
+8.  **관련 파일 식별:** 작업과 PRD를 바탕으로 새로 생성하거나 수정해야 할 파일을 `관련 파일` 섹션에 나열합니다. 해당 테스트 파일도 함께 포함하세요.
+9.  **최종 출력 생성:** 상위 작업, 하위 작업, 관련 파일, 노트를 결합하여 최종 Markdown 구조로 만듭니다.
+10.  **작업 목록 저장:** `/tasks/` 디렉터리에 `tasks-[prd-file-name].md` 파일명으로 저장합니다. `[prd-file-name]`은 입력받은 PRD 파일의 기본 이름과 일치해야 합니다(예: 입력이 `prd-user-profile-editing.md`라면 출력은 `tasks-prd-user-profile-editing.md`).
 
-## Output Format
+## 출력 형식
 
-The generated task list _must_ follow this structure:
+생성된 작업 목록은 반드시 아래 구조를 따라야 합니다:
 
 ```markdown
-## Relevant Files
+## 관련 파일
 
-- `path/to/potential/file1.ts` - Brief description of why this file is relevant (e.g., Contains the main component for this feature).
-- `path/to/file1.test.ts` - Unit tests for `file1.ts`.
-- `path/to/another/file.tsx` - Brief description (e.g., API route handler for data submission).
-- `path/to/another/file.test.tsx` - Unit tests for `another/file.tsx`.
-- `lib/utils/helpers.ts` - Brief description (e.g., Utility functions needed for calculations).
-- `lib/utils/helpers.test.ts` - Unit tests for `helpers.ts`.
+- `path/to/potential/file1.ts` - 이 파일이 왜 관련 있는지 간단 설명 (예: 해당 기능의 메인 컴포넌트 포함)
+- `path/to/file1.test.ts` - `file1.ts`에 대한 단위 테스트
+- `path/to/another/file.tsx` - 간단 설명 (예: 데이터 제출을 위한 API 라우트 핸들러)
+- `path/to/another/file.test.tsx` - `another/file.tsx`에 대한 단위 테스트
+- `lib/utils/helpers.ts` - 간단 설명 (예: 계산에 필요한 유틸리티 함수)
+- `lib/utils/helpers.test.ts` - `helpers.ts`에 대한 단위 테스트
 
-### Notes
+### 노트
 
-- Unit tests should typically be placed alongside the code files they are testing (e.g., `MyComponent.tsx` and `MyComponent.test.tsx` in the same directory).
-- Use `npx jest [optional/path/to/test/file]` to run tests. Running without a path executes all tests found by the Jest configuration.
+- 단위 테스트는 일반적으로 테스트 대상 코드 파일과 같은 디렉터리에 배치하세요 (예: `MyComponent.tsx`와 `MyComponent.test.tsx`).
+- 테스트 실행은 `npx jest [optional/path/to/test/file]` 명령을 사용하세요. 경로 없이 실행하면 Jest 설정에 따라 모든 테스트가 실행됩니다.
 
-## Tasks
+## 작업
 
-- [ ] 1.0 Parent Task Title
-  - [ ] 1.1 [Sub-task description 1.1]
-  - [ ] 1.2 [Sub-task description 1.2]
-- [ ] 2.0 Parent Task Title
-  - [ ] 2.1 [Sub-task description 2.1]
-- [ ] 3.0 Parent Task Title (may not require sub-tasks if purely structural or configuration)
+- [ ] 1.0 상위 작업 제목
+  - [ ] 1.1 [하위 작업 설명 1.1]
+  - [ ] 1.2 [하위 작업 설명 1.2]
+- [ ] 2.0 상위 작업 제목
+  - [ ] 2.1 [하위 작업 설명 2.1]
+- [ ] 3.0 상위 작업 제목 (구조적/설정 작업일 경우 하위 작업이 필요 없을 수 있음)
 ```
 
-## Interaction Model
+## 상호작용 모델
 
-The process explicitly requires a pause after generating parent tasks to get user confirmation ("Go") before proceeding to generate the detailed sub-tasks. This ensures the high-level plan aligns with user expectations before diving into details.
+상위 작업을 생성한 후 반드시 사용자 확인("Go")을 받은 뒤에만 하위 작업을 생성하도록 일시 정지하세요. 이렇게 하면 세부 작업에 들어가기 전에 전체 계획이 사용자 기대와 일치하는지 확인할 수 있습니다.
 
-## Target Audience
+## 대상 독자
 
-Assume the primary reader of the task list is a **junior developer** who will implement the feature with awareness of the existing codebase context.
+작업 목록의 주요 독자는 **주니어 개발자**임을 가정합니다. 기존 코드베이스의 맥락을 이해하며 기능을 구현할 개발자를 위한 문서입니다.
